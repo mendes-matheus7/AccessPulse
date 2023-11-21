@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    top: 0;
+    left: 0;
+    padding: 0;
+    font-family: "Audiowide", sans-serif;
+  }
+
+  .image{
+    text-align: right;
+    align-items: center;
+    height: 80vh;
+  }
+  .image img {
+    width: auto;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .login {
+    width: 300px;
+    align-items: center;
+    border-style: outset;
+    border-color: #E095E4;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: black;
+    color: white;
+    display: grid;
+    grid-template-rows: auto auto auto;
+  }
+  
+  .grid-container-login {
+    display: grid;
+    height: 80%;
+    align-content: center;
+    grid-template-columns: auto auto;
+    margin: 10vh 10vw 10vh 10vw;
+  }
+
+  .login-container {
+    padding: 10px;
+  }
+  .login-container label,
+  .login-container input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .login-container a {
+    padding-top: 10px;
+    display: flex;
+    justify-content: right;
+    color: white;
+  }
+  .login-container input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  .login-container button {
+    background-color: #E095E4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .login-container button:hover{
+    background-color: #be5bc4;
+    font-size: large;
+  }
+
+
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .login-container hr {
+    margin-bottom: 15px;
+  }
+
+  .login-container span{
+    width: 100%;
+    text-align: right;
+  }
+
+  
+  .mensagem-falha {
+    text-align: center;
+    color: #ff0000;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .logo {
+    text-align: center;
+  }
+  .logo img {
+    width: 6vw;
+    height: auto;
+    max-height: 50px;
+  }
+
+  .footer {
+    text-align: center;
+  }
+  .footer a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  .footer i {
+    padding-right: 10px;
+  }

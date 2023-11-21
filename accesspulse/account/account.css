@@ -1,0 +1,64 @@
+.dados {
+    display: block;
+}
+
+.plano {
+    display: none;
+}
+
+.acesso {
+    display: none;
+}
+
+.financeiro {
+    display: none;
+}
+
+
+.info form {
+    border-radius: 10px;
+    margin: 0 10px 10px 10px;
+}
+.info form hr {
+    width: 50%;
+    margin: 10px;
+}
+.info form label {
+    font-size: large;
+    padding: 10px;
+    align-items: baseline;
+}
+.info form input[type=text],
+.info form input[type=date],
+.info form input[type=email],
+.info form input[type=password],
+.info form input[type=tel] {
+    background-color: black;
+    border: solid 1px gray;
+    width: 100%;
+    max-width: 300px;
+    justify-content: right;
+    border-radius: 10px;
+    padding: 10px 10px 0 10px;
+    color: white;
+    margin-bottom: 20px;
+}
+.info form span {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.info form input[type=submit]{
+    background-color: #E095E4;
+    margin-top: 10px;
+    width: 50%;
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+.info form input[type=submit]:hover {
+    font-size: large;
+}
