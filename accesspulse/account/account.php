@@ -6,7 +6,7 @@ if (isset($_SESSION['mensagem_sucesso'])) {
   echo "<script> alert('" . $_SESSION['mensagem_sucesso'] . "');</script>";
   unset($_SESSION['mensagem_sucesso']); // Limpa a mensagem para evitar exibi-la novamente
 }
-
+$cpf = $_SESSION['user_cpf'];
 ?>
 
 
@@ -41,21 +41,20 @@ if (isset($_SESSION['mensagem_sucesso'])) {
 
   <div class="item2">
     <ul>
-        <li onclick="showInformation(1, <?php echo $_SESSION['user_cpf'];?>)">
+        <li onclick="showInformation(1, '<?php echo htmlspecialchars($cpf, ENT_QUOTES, 'UTF-8'); ?>')">
             <span><i class="fa-solid fa-address-card"></i></span>
             <span class="maintext">Seus Dados</span>
         </li>
-        <?php if($_SESSION['user_level'] == "membro"){
-          echo '
-        <li  onclick="showInformation(2, $_SESSION[\'user_cpf\'])">
+        
+
+        <li  onclick="showInformation(2, '<?php echo htmlspecialchars($cpf, ENT_QUOTES, 'UTF-8'); ?>')" <?php if($_SESSION['user_level'] == "funcionario"){ echo 'style="display:none"';}?>>
             <span><i class="fa-solid fa-dumbbell"></i></span>
             <span class="maintext">Seu Plano</span>
         </li>
-        <li onclick="showInformation(4, $_SESSION[\'user_cpf\'])">
+        <li onclick="showInformation(4)" <?php if($_SESSION['user_level'] == "funcionario"){ echo 'style="display:none"';}?>>
             <span><i class="fa-solid fa-credit-card"></i></span>
             <span class="maintext">Financeiro</span>
-        </li>';
-        }?>
+        </li>
         <li onclick="showInformation(3)">
             <span><i class="fa-solid fa-fingerprint"></i></span>
             <span class="maintext">Seu Acesso</span>
@@ -77,11 +76,16 @@ if (isset($_SESSION['mensagem_sucesso'])) {
       Minhas finanças
     </div>
   </div>
-  <div class="item5">Footer</div>
+  <div class="item5">
+    <span>Caio Casadei</span>
+    <span>Fernando Lorenzeto</span>
+    <span>Luiz Gustavo</span>
+    <span>Matheus Mendes</span>
+  </div>
 </div>
 
 <script>
-  window.onload = showInformation(1, <?php echo $_SESSION['user_cpf'];?>);
+  window.onload = showInformation(1, '<?php echo htmlspecialchars($cpf, ENT_QUOTES, 'UTF-8'); ?>');
 </script>
 </body>
 </html>

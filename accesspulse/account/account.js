@@ -4,7 +4,7 @@ function showInformation(mainID, usuarioCPF){
         document.getElementById("plano").style.display = "none";
         document.getElementById("acesso").style.display = "none";
         document.getElementById("financeiro").style.display = "none";
-        exibirDadosUsuario(usuarioCPF);
+        exibirDadosUsuario(usuarioCPF)
     } else if(mainID == 2){
         document.getElementById("dados").style.display = "none";
         document.getElementById("plano").style.display = "block";
@@ -44,19 +44,19 @@ function exibirDadosUsuario(usuarioCPF){
 }
 
 function exibirPlano(usuarioCPF){
-    var divPlano = document.getElementById('infoPlano');
+    var divInfoPlano = document.getElementById('infoPlano');
     
-    divPlano.innerHTML = '';
+    divInfoPlano.innerHTML = '';
     // Envia uma solicitação AJAX para a URL do arquivo PHP
     $.ajax({
         type: 'POST',
         url: 'exibirPlano.php', // A URL do arquivo PHP
         data: { usuarioCPF: usuarioCPF},
         success: function(data) {
-            divPlano.innerHTML += data;
+            divInfoPlano.innerHTML += data;
         },
         error: function() {
-            divPlano.innerHTML += '<br>Erro ao buscar dados do usuário.';
+            divInfoPlano.innerHTML += '<br>Erro ao buscar dados do usuário.';
         }
     });
 }

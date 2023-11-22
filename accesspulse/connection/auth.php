@@ -6,7 +6,7 @@ if(!isset($_SESSION)) {
 
 
 if(!isset($_SESSION['user_cpf'])) {
-    die("Erro de autenticação! Favor efetuar login novamente.<p><a href=\"signinclient.php\">Entrar</a></p>");
+    die("Erro de autenticação! Favor efetuar login novamente.<p><a href=\"../signinclient.php\">Entrar</a></p>");
 }
 
 ?>

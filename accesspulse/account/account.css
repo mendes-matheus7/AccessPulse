@@ -62,3 +62,41 @@
 .info form input[type=submit]:hover {
     font-size: large;
 }
+
+.info table {
+    margin-top: 200px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    text-shadow:  1px 1px 2px black, 0 0 25px gray, 0 0 5px black;
+}
+
+.info table th,
+td {
+    border: none;
+    padding: 20px;
+    font-weight: 300;
+    background-color: rgba(200, 200, 200, 0.2);
+}
+.info table td{
+    text-wrap:wrap;
+    font-weight: 700;
+}
+
+.info a {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-left: 40%;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #E095E4;
+    border-radius: 10px;
+    width: 20%;
+    transition: 2s;
+}
+.info a:hover {
+    background-color: #bc48c2;
+}

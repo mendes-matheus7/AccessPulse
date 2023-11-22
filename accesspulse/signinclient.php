@@ -24,6 +24,7 @@ if(strlen($_POST['cpf']) == 0) {
             session_start();
         }
 
+        
         $_SESSION['user_cpf'] = $usuario['cpf'];
         $_SESSION['user_name'] = $usuario['nome'];
         $_SESSION['user_level'] = "membro";

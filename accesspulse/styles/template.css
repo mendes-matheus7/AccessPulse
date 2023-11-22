@@ -1,90 +1,119 @@
-* {
-  margin: 0;
-  top: 0;
-  left: 0;
-  padding: 0;
-  color: white;
-  font-family: "Audiowide", sans-serif;
-}
+  * {
+    margin: 0;
+    top: 0;
+    left: 0;
+    padding: 0;
+    color: white;
+    font-family: "Audiowide", sans-serif;
+  }
 
-/*HEADER*/
-.item1 { 
-  grid-area: header;
-  align-items: center;
-  display: flex;
-  height: 50px;
-}
-.item1 .left {
-  margin-left: 2%;
-  width: 49%;
-  display: flex;
-}
-.item1 .left .logo img{
-  width: 6vw;
-  height: auto;
-  max-height: 50px;
-}
-.item1 .left .items{
-  width:20vw;
-  padding-left: 60px;
-  font-size:40px;
-  display: flex;
-}
-.item1 i {
-  color: white;
-  padding-inline: 20px;
-  transition: 1s;
-}
-.item1 i:hover {
-  color: #E095E4;
-  font-size: 45px;
-}
-.item1 .right {
-  width: 50%;
-  text-align: right;
-  padding-right: 10vw;
-}
+  /*HEADER*/
+  .item1 { 
+    grid-area: header;
+    background-image: url('../img/bg_header.jpg');
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a tela */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa enquanto a página é rolada */
+    align-items: center;
+    display: flex;
+    height: 50px;
+  }
+  .item1 .left {
+    margin-left: 2%;
+    width: 49%;
+    display: flex;
+  }
+  .item1 .left .logo img{
+    width: 6vw;
+    height: auto;
+    max-height: 50px;
+  }
+  .item1 .left .items{
+    width:20vw;
+    padding-left: 60px;
+    font-size:40px;
+    display: flex;
+  }
+  .item1 i {
+    color: white;
+    padding-inline: 20px;
+    text-shadow:  1px 1px 2px black, 0 0 25px gray, 0 0 5px black;
+    transition: 1s;
+  }
+  .item1 i:hover {
+    color: #E095E4;
+    font-size: 45px;
+  }
+  .item1 .right {
+    width: 50%;
+    text-align: right;
+    padding-right: 10vw;
+  }
 
-/*MENU*/
-.item2 { 
-  grid-area: menu;
-  width: 300px;
-  height: calc(100vh - 140px);
-}
-.item2 ul {
-  padding: 0;
-  list-style: none; 
-  width: 90%;
-}
-.item2 li {
-  align-items: center;
-  margin-left: 5px;
-  margin-bottom: 30px;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 10px;
-  font-size: 25px;
-  transition: 1s;
-}
-.item2 li:hover {
-  background-color: rgba(224, 149, 228, 0.7);
-  font-size: 27px;
-}
-.item2 i{
-  width: 25px; /*determina o largura máx dos ícones para garantir o alinhamento do texto após eles*/
-}
-.item2 .maintext {
-  margin-left: 10px;
-}
+  /*MENU*/
+  .item2 { 
+    grid-area: menu;
+    background-image: url('../img/bg_menu.jpg');
+    background-size: contain; /* Ajusta o tamanho da imagem para cobrir toda a tela */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa enquanto a página é rolada */
+    width: 300px;
+    height: calc(100vh - 135px);
+  }
+  .item2 ul {
+    padding: 0;
+    list-style: none; 
+    width: 90%;
+  }
+  .item2 li {
+    align-items: center;
+    margin-left: 5px;
+    margin-bottom: 30px;
+    padding: 10px;
+    text-shadow:  1px 1px 2px black, 0 0 25px gray, 0 0 5px black;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 25px;
+    transition: 1s;
+  }
+  .item2 li:hover {
+    background-color: rgba(224, 149, 228, 0.7);
+    font-size: 27px;
+  }
+  .item2 i{
+    width: 25px; /*determina o largura máx dos ícones para garantir o alinhamento do texto após eles*/
+  }
+  .item2 .maintext {
+    margin-left: 10px;
+  }
 
-/*CONTEUDO DA PAG*/
-.item3 { 
-  grid-area: main; 
-  width: calc(100vw - 310px);
-}
+  /*CONTEUDO DA PAG*/
+  .item3 { 
+    grid-area: main; 
+    background-image: url('../img/bg_main.jpg');
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a tela */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa enquanto a página é rolada */
+    width: calc(100vw - 305px);
+    height: calc(100vh - 230px);
+  }
 
-/*RODAPÉ*/
-.item5 { grid-area: footer; }
+  /*RODAPÉ*/
+  .item5 { 
+    grid-area: footer; 
+    background-image: url('../img/bg_footer.jpg');
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a tela */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa enquanto a página é rolada */
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }    
+  .item5 span {
+    margin: 0 40px 0 40px;
+  }
 
 .grid-container {
   display: grid;
@@ -92,7 +121,7 @@
     'header header header header header header'
     'menu main main main main main'
     'menu footer footer footer footer footer';
-  gap: 10px;
+  gap: 5px;
   background-color: rgba(224, 149, 228, 1);  /*cor rosa #E095E4*/
 }
 

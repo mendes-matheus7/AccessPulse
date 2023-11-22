@@ -1,12 +1,14 @@
 <?php
 include('../connection/connection.php');
 include('../connection/auth.php');
+include('exibirEspacos.php');
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="../styles/template.css">
+
+  <link rel="stylesheet" href="access.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
   <title>Home</title>
@@ -17,7 +19,7 @@ include('../connection/auth.php');
   <div class="item1">
     <div class="left">
       <div class="logo">
-        <img src="img/logo_bg_black.png" alt="logoblack">
+        <img src="../img/logo_bg_black.png" alt="logoblack">
       </div>
       <div class="items">
         <a href="access.php" title="Acesso"><i class="fa-solid fa-fingerprint"></i></a>
@@ -30,9 +32,15 @@ include('../connection/auth.php');
     </div>
   </div>
 
-  <div class="item2">Menu</div>
-  <div class="item3">Main</div>
-  <div class="item5">Footer</div>
+  <div class="item3">
+    <?php mostrarEspaco();?>
+  </div>
+  <div class="item5">
+    <span>Caio Casadei</span>
+    <span>Fernando Lorenzeto</span>
+    <span>Luiz Gustavo</span>
+    <span>Matheus Mendes</span>
+  </div>
 </div>
 
 </body>
