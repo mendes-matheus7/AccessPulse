@@ -2,25 +2,26 @@ function showInformation(mainID, usuarioCPF){
     if(mainID == 1){
         document.getElementById("dados").style.display = "block";
         document.getElementById("plano").style.display = "none";
-        document.getElementById("acesso").style.display = "none";
         document.getElementById("financeiro").style.display = "none";
+        document.getElementById("acesso").style.display = "none";
         exibirDadosUsuario(usuarioCPF)
     } else if(mainID == 2){
         document.getElementById("dados").style.display = "none";
         document.getElementById("plano").style.display = "block";
-        document.getElementById("acesso").style.display = "none";
         document.getElementById("financeiro").style.display = "none";
+        document.getElementById("acesso").style.display = "none";
         exibirPlano(usuarioCPF);
     } else if(mainID == 3){
         document.getElementById("dados").style.display = "none";
         document.getElementById("plano").style.display = "none";
-        document.getElementById("acesso").style.display = "block";
-        document.getElementById("financeiro").style.display = "none";
+        document.getElementById("financeiro").style.display = "block";
+        document.getElementById("acesso").style.display = "none";
     } else if(mainID == 4){
         document.getElementById("dados").style.display = "none";
         document.getElementById("plano").style.display = "none";
-        document.getElementById("acesso").style.display = "none";
-        document.getElementById("financeiro").style.display = "block";
+        document.getElementById("financeiro").style.display = "none";
+        document.getElementById("acesso").style.display = "block";
+        exibirAcesso(usuarioCPF);
     }
 }
 
@@ -57,6 +58,24 @@ function exibirPlano(usuarioCPF){
         },
         error: function() {
             divInfoPlano.innerHTML += '<br>Erro ao buscar dados do usuário.';
+        }
+    });
+}
+
+function exibirAcesso(usuarioCPF){
+    var divInfoAcesso = document.getElementById('infoAcesso');
+    
+    divInfoAcesso.innerHTML = '';
+    // Envia uma solicitação AJAX para a URL do arquivo PHP
+    $.ajax({
+        type: 'POST',
+        url: 'exibirAcesso.php', // A URL do arquivo PHP
+        data: {},
+        success: function(data) {
+            divInfoAcesso.innerHTML += data;
+        },
+        error: function() {
+            divInfoAcesso.innerHTML += '<br>Erro ao buscar dados do usuário.';
         }
     });
 }

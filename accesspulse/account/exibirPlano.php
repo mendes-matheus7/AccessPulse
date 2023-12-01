@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
 
         echo "</table>";
 
-        echo '<a href="#">Mudar plano</a>';
+        echo '<a href="../plano/plano.php">Mudar plano</a>';
     } else {
         echo "Nenhum plano encontrado. Procure a recepção para contratar seu plano.";
     }

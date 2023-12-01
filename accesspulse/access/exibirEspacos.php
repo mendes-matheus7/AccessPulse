@@ -2,8 +2,9 @@
     function mostrarEspaco(){
         include('../connection/connection.php');
         $cpf = $_SESSION['user_cpf'];
+        $level = $_SESSION['user_level'];
         
-        $selectEspaco = "SELECT c.plano_idplano, m.nomemodalidade, e.nomeespaco, e.capacidade 
+        $selectEspaco = "SELECT c.plano_idplano, m.nomemodalidade, e.nomeespaco, e.capacidade, e.idespaco 
         FROM membro c 
         JOIN plano p ON c.plano_idplano = p.idplano
         JOIN contem i ON p.idplano = i.plano_idplano
@@ -15,26 +16,38 @@
 
          // Verifica se há resultados
         if ($espaco->num_rows > 0) {
-            // Exibe os resultados em uma tabela HTML
-            echo "<table border='1'>
-                    <tr>
-                        <th>Nome da Modalidade</th>
-                        <th>Nome do Espaço</th>
-                        <th>Capacidade</th>
-                    </tr>";
-
-            // Exibe cada linha de resultado
+            // Exibe os resultados dentro de caixinhas
             while ($row = $espaco->fetch_assoc()) {
-                echo "<tr>
-                        <td>{$row['nomemodalidade']}</td>
-                        <td>{$row['nomeespaco']}</td>
-                        <td>{$row['capacidade']}</td>
-                    </tr>";
+                echo '<div class="box">
+                        <label>'.$row['nomemodalidade'].'</label><br>
+                        <i onclick="AcessarEspaco('.$row['idespaco'].', \''.$cpf.'\', \''.$level.'\')" class="fa-solid fa-fingerprint"></i><br>
+                        <label>'.$row['nomeespaco'].'</label>
+                    </div>';
             }
 
             echo "</table>";
         }else {
             echo "Sem acessos liberados. Favor consultar a recepção.";
+        }
+    }
+
+    if (isset($_POST['action']) && $_POST['action'] === 'acessar') {
+        // Execute a função acessar o espaço  se a ação for 'acessar'
+        acessar();
+    }
+
+    function acessar(){
+        include('../connection/connection.php');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $idEspaco = $_POST['idEspaco'];
+            $cpfUsuario = $_POST['cpfUsuario'];
+            // comando sql para inserir na tabela acesso o acesso realizado pelo membro
+            $insertEspaco = "INSERT INTO acesso_membro(horaentrada, membro_cpf_membro, espaco_idespaco)
+                             VALUES (NOW(), '$cpfUsuario', $idEspaco)";
+
+            if ($mysqli->query($insertEspaco) === FALSE) {
+                echo "Acesso Negado!" . $mysqli->error;
+            }
         }
     }
 ?>

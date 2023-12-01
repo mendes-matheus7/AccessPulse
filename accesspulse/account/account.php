@@ -31,7 +31,7 @@ $cpf = $_SESSION['user_cpf'];
       <div class="items">
         <a href="../access/access.php" title="Acesso"><i class="fa-solid fa-fingerprint"></i></a>
         <a href="account.php" title="Conta"><i class="fa-solid fa-user-astronaut"></i></a>
-        <a href="#" title="Planos"><i class="fa-solid fa-dumbbell"></i></a>
+        <a href="../plano/plano.php" title="Planos"><i class="fa-solid fa-dumbbell"></i></a>
       </div>
     </div>
     <div class="right">
@@ -51,11 +51,11 @@ $cpf = $_SESSION['user_cpf'];
             <span><i class="fa-solid fa-dumbbell"></i></span>
             <span class="maintext">Seu Plano</span>
         </li>
-        <li onclick="showInformation(4)" <?php if($_SESSION['user_level'] == "funcionario"){ echo 'style="display:none"';}?>>
+        <li onclick="showInformation(3)" <?php if($_SESSION['user_level'] == "funcionario"){ echo 'style="display:none"';}?>>
             <span><i class="fa-solid fa-credit-card"></i></span>
             <span class="maintext">Financeiro</span>
         </li>
-        <li onclick="showInformation(3)">
+        <li onclick="showInformation(4)">
             <span><i class="fa-solid fa-fingerprint"></i></span>
             <span class="maintext">Seu Acesso</span>
         </li>
@@ -63,17 +63,17 @@ $cpf = $_SESSION['user_cpf'];
   </div>
   <div class="item3">
     <div id="dados" class="dados">
-      <!-- Aqui será exibido os dados do cliente ou do funcionário -->
+      <!-- Aqui será exibido os dados do membro ou do funcionário -->
       <div id="info" class="info"></div>
     </div>
     <div id="plano" class="plano">
       <div id="infoPlano" class="info"></div>
     </div>
-    <div id="acesso" class="acesso">
-      Meu acesso
-    </div>
     <div id="financeiro" class="financeiro">
       Minhas finanças
+    </div>
+    <div id="acesso" class="acesso">
+      <div id="infoAcesso" class="info"></div>
     </div>
   </div>
   <div class="item5">

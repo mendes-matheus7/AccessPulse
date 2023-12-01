@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: account.php");
         exit();
     } else {
-        echo "Erro ao cadastrar a usina: " . $mysqli->error;
+        echo "Erro ao alterar dados!" . $mysqli->error;
     }
 }
 ?>

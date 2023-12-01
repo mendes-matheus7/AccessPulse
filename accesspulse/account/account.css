@@ -33,7 +33,7 @@
 .info form input[type=email],
 .info form input[type=password],
 .info form input[type=tel] {
-    background-color: black;
+    background-color: rgba(224, 149, 228, 0.2);
     border: solid 1px gray;
     width: 100%;
     max-width: 300px;
@@ -72,17 +72,29 @@
     align-items: center;
     text-shadow:  1px 1px 2px black, 0 0 25px gray, 0 0 5px black;
 }
-
+.info table {
+    padding: 20px;
+}
 .info table th,
 td {
     border: none;
     padding: 20px;
     font-weight: 300;
-    background-color: rgba(200, 200, 200, 0.2);
+    font-size: 20px;
+    background-color: rgba(224, 149, 228, 0.4);
+}
+.info table th {
+    font-size: 25px;
+    text-decoration: underline;
 }
 .info table td{
     text-wrap:wrap;
     font-weight: 700;
+}
+.info .tabela-scroll {
+    
+    height: 500px;
+    overflow-y: auto;
 }
 
 .info a {
@@ -100,3 +112,4 @@ td {
 .info a:hover {
     background-color: #bc48c2;
 }
+

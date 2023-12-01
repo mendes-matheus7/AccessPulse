@@ -27,6 +27,7 @@ if(strlen($_POST['cpf']) == 0) {
         
         $_SESSION['user_cpf'] = $usuario['cpf'];
         $_SESSION['user_name'] = $usuario['nome'];
+        $_SESSION['user_planoID'] = $usuario['plano_idplano'];
         $_SESSION['user_level'] = "membro";
 
         header("Location: access/access.php");
