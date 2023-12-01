@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 22-Nov-2023 às 00:26
+-- Tempo de geração: 01-Dez-2023 às 01:41
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -45,13 +45,20 @@ CREATE TABLE IF NOT EXISTS `acesso_funcionario` (
 
 DROP TABLE IF EXISTS `acesso_membro`;
 CREATE TABLE IF NOT EXISTS `acesso_membro` (
-  `horaentrada` date DEFAULT NULL,
-  `horasaida` date DEFAULT NULL,
+  `horaentrada` datetime DEFAULT NULL,
+  `horasaida` datetime DEFAULT NULL,
   `membro_cpf_membro` varchar(11) NOT NULL,
   `espaco_idespaco` int NOT NULL,
   KEY `acesso_membro_espaco_fk` (`espaco_idespaco`),
   KEY `acesso_membro_membro_fk` (`membro_cpf_membro`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `acesso_membro`
+--
+
+INSERT INTO `acesso_membro` (`horaentrada`, `horasaida`, `membro_cpf_membro`, `espaco_idespaco`) VALUES
+('2023-11-30 21:26:54', NULL, '01788644638', 1);
 
 -- --------------------------------------------------------
 
@@ -168,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `membro` (
 
 INSERT INTO `membro` (`cpf`, `nome`, `email`, `endereco`, `telefone`, `datanascimento`, `senha`, `plano_idplano`) VALUES
 ('01010101011', 'Teste', 'teste@a.a', 'Rua Teste', '31987213', '0000-00-00', '1q2w3e', NULL),
-('01788644638', 'Matheus Mendess', 'matheusmendes0100@gmail.com', 'Rua Aurélio Lopes, 237', '31975825572', '2000-01-14', '1234', 3);
+('01788644638', 'Matheus Mendes', 'matheusmendes0100@gmail.com', 'Rua Aurélio Lopes, 237', '31975825572', '2000-01-14', '1234', 3);
 
 -- --------------------------------------------------------
 
@@ -222,22 +229,21 @@ INSERT INTO `modalidade` (`idmodalidade`, `nomemodalidade`, `utiliza_espaco_ides
 
 DROP TABLE IF EXISTS `plano`;
 CREATE TABLE IF NOT EXISTS `plano` (
-  `idplano` int NOT NULL,
+  `idplano` int NOT NULL AUTO_INCREMENT,
   `nomeplano` varchar(255) NOT NULL,
   `duracao` varchar(255) NOT NULL,
   `valorplano` decimal(10,2) NOT NULL,
   PRIMARY KEY (`idplano`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `plano`
 --
 
 INSERT INTO `plano` (`idplano`, `nomeplano`, `duracao`, `valorplano`) VALUES
-(1, 'Plano Básico', '3 meses', '150.00'),
-(2, 'Plano Intermediário', '6 meses', '250.00'),
-(3, 'Plano Premium', '12 meses', '400.00'),
-(4, 'Plano Personalizado', '1 mês', '80.00');
+(1, 'Plano Básico', '1 mês', '150.00'),
+(2, 'Plano Intermediário', '1 mês', '250.00'),
+(3, 'Plano Premium', '1 mês', '400.00');
 
 -- --------------------------------------------------------
 
