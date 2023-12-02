@@ -3,6 +3,9 @@
         include('../connection/connection.php');
         $cpf = $_SESSION['user_cpf'];
         $level = $_SESSION['user_level'];
+        if($level == "funcionario"){
+            $funcaoFunc = $_SESSION['user_function'];
+        }
 
         $selectPlanos = "SELECT p.idplano, p.nomeplano, p.duracao, p.valorplano,
         (   SELECT GROUP_CONCAT(m.nomemodalidade SEPARATOR ', ')
@@ -26,8 +29,14 @@
             while ($row = $planos->fetch_assoc()) {
                 echo '<div class="box">
                         <div class="tittle">
-                            '.$row['nomeplano'].' <i class="fa-solid fa-dumbbell"></i>
-                        </div>
+                            '.$row['nomeplano'].' ';
+                            if($level == "funcionario" && $funcaoFunc == "Gerente"){
+                                echo '<i class="fa-solid fa-edit"></i><i onclick="apagaPlano('.$row['idplano'].')" class="fa-solid fa-trash"></i>';
+                            }else{
+                                echo '<i class="fa-solid fa-dumbbell"></i>';
+                            }
+                            
+                   echo'</div>
                         <div class="price">
                             <label>R$ '.$row['valorplano'].'</label><br>
                         </div>
@@ -47,9 +56,6 @@
                         }
                     echo '</div>';
             }
-            if($level != "membro"){
-                echo '<a href="addplano.php" title="Adicionar Plano" class="addPlano"><i class="fa-solid fa-plus"></i></a>';
-            }
         }else {
             echo "Sem planos cadastrados!";
         }
@@ -58,7 +64,10 @@
     if (isset($_POST['action']) && $_POST['action'] === 'alterarPlano') {
         // Execute a função alterar Plano do membro se a ação for 'alterarPlano'
         alterarPlano();
+    }else if(isset($_POST['action']) && $_POST['action'] === 'apagaPlano') {
+        apagaPlano();
     }
+    
 
     function alterarPlano(){
         include('../connection/connection.php');
@@ -72,6 +81,19 @@
             if ($mysqli->query($updatePlanoMembro) === TRUE) {
                 session_start();
             }else{
+                echo "Erro ao alterar o plano. verifique se existem pendências financeiras." . $mysqli->error;
+            }
+        }
+    }
+
+    function apagaPlano(){
+        include('../connection/connection.php');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $idPlano = $_POST['idPlano'];
+            // comando sql para alterar o plano do membro pelo próprio membro
+            $deletePlano = "DELETE FROM plano WHERE idplano = '$idPlano'";
+
+            if ($mysqli->query($deletePlano) === FALSE) {
                 echo "Erro ao alterar o plano. verifique se existem pendências financeiras." . $mysqli->error;
             }
         }

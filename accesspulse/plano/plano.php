@@ -2,6 +2,10 @@
 include('../connection/connection.php');
 include('../connection/auth.php');
 include('exibirPlanos.php');
+if (isset($_SESSION['mensagem_sucesso'])) {
+  echo "<script> alert('" . $_SESSION['mensagem_sucesso'] . "');</script>";
+  unset($_SESSION['mensagem_sucesso']); // Limpa a mensagem para evitar exibi-la novamente
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +39,19 @@ include('exibirPlanos.php');
   </div>
 
   <div class="item3">
-    <?php mostrarPlanos(); ?>
+    <?php
+    if($_SESSION['user_level'] == "funcionario" &&  $_SESSION['user_function'] == "Gerente"){
+      echo'<div class="escolha">
+            <a href="addplano.php">Adicionar Plano</a>
+            <a href="addModalidade.php">Adicionar Modalidade</a>
+            <a href="addEspaco.php">Adicionar Espaço</a>
+          </div>';
+    }
+    ?>
+    
+    <div class="conteudo">
+      <?php mostrarPlanos(); ?>
+    </div>
   </div>
 
   <div class="item5">

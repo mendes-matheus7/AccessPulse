@@ -4,7 +4,7 @@ function showInformation(mainID, usuarioCPF){
         document.getElementById("plano").style.display = "none";
         document.getElementById("financeiro").style.display = "none";
         document.getElementById("acesso").style.display = "none";
-        exibirDadosUsuario(usuarioCPF)
+        exibirDadosUsuario(usuarioCPF);
     } else if(mainID == 2){
         document.getElementById("dados").style.display = "none";
         document.getElementById("plano").style.display = "block";
