@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 01-Dez-2023 às 01:41
+-- Tempo de geração: 02-Dez-2023 às 19:44
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `acesso_funcionario` (
   `espaco_idespaco` int NOT NULL,
   KEY `acesso_funcionario_espaco_fk` (`espaco_idespaco`),
   KEY `acesso_funcionario_func_fk` (`funcionario_cpf_funcionario`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -51,14 +51,15 @@ CREATE TABLE IF NOT EXISTS `acesso_membro` (
   `espaco_idespaco` int NOT NULL,
   KEY `acesso_membro_espaco_fk` (`espaco_idespaco`),
   KEY `acesso_membro_membro_fk` (`membro_cpf_membro`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `acesso_membro`
 --
 
 INSERT INTO `acesso_membro` (`horaentrada`, `horasaida`, `membro_cpf_membro`, `espaco_idespaco`) VALUES
-('2023-11-30 21:26:54', NULL, '01788644638', 1);
+('2023-11-30 21:26:54', NULL, '01788644638', 1),
+('2023-12-01 15:18:32', NULL, '01788644638', 3);
 
 -- --------------------------------------------------------
 
@@ -72,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `contem` (
   `modalidade_idmodalidade` int NOT NULL,
   KEY `fk_idplano` (`plano_idplano`),
   KEY `fk_idmodalidade` (`modalidade_idmodalidade`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `contem`
@@ -94,13 +95,13 @@ INSERT INTO `contem` (`plano_idplano`, `modalidade_idmodalidade`) VALUES
 
 DROP TABLE IF EXISTS `espaco`;
 CREATE TABLE IF NOT EXISTS `espaco` (
-  `idespaco` int NOT NULL,
+  `idespaco` int NOT NULL AUTO_INCREMENT,
   `nomeespaco` varchar(255) DEFAULT NULL,
   `capacidade` int DEFAULT NULL,
   `horarioabertura` time DEFAULT NULL,
   `horariofechamento` time DEFAULT NULL,
   PRIMARY KEY (`idespaco`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `espaco`
@@ -110,7 +111,8 @@ INSERT INTO `espaco` (`idespaco`, `nomeespaco`, `capacidade`, `horarioabertura`,
 (3, 'Estúdio de Yoga', 20, '08:00:00', '20:00:00'),
 (2, 'Academia', 50, '06:00:00', '23:00:00'),
 (1, 'Sala de Aeróbico', 30, '07:00:00', '21:00:00'),
-(4, 'Estúdio de Pilates', 15, '09:00:00', '18:00:00');
+(4, 'Estúdio de Pilates', 15, '09:00:00', '18:00:00'),
+(5, 'Piscina', 20, '06:30:00', '19:00:00');
 
 -- --------------------------------------------------------
 
@@ -120,7 +122,7 @@ INSERT INTO `espaco` (`idespaco`, `nomeespaco`, `capacidade`, `horarioabertura`,
 
 DROP TABLE IF EXISTS `funcionario`;
 CREATE TABLE IF NOT EXISTS `funcionario` (
-  `cpf` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `cpf` varchar(11)  NOT NULL,
   `nome` varchar(255) NOT NULL,
   `endereco` varchar(255) NOT NULL,
   `telefone` varchar(15) NOT NULL,
@@ -131,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `datademissao` date DEFAULT NULL,
   `senha` varchar(255) NOT NULL,
   PRIMARY KEY (`cpf`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `funcionario`
@@ -157,7 +159,7 @@ INSERT INTO `funcionario` (`cpf`, `nome`, `endereco`, `telefone`, `datanasciment
 
 DROP TABLE IF EXISTS `membro`;
 CREATE TABLE IF NOT EXISTS `membro` (
-  `cpf` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `cpf` varchar(11)  NOT NULL,
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `endereco` varchar(255) NOT NULL,
@@ -167,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `membro` (
   `plano_idplano` int DEFAULT NULL,
   PRIMARY KEY (`cpf`),
   KEY `fk_idplano` (`plano_idplano`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `membro`
@@ -194,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `mensalidade` (
   PRIMARY KEY (`numeroboleto`),
   KEY `mensalidade_membro_fk` (`membro_cpf_membro`),
   KEY `mensalidade_plano_fk` (`plano_idplano`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -204,12 +206,12 @@ CREATE TABLE IF NOT EXISTS `mensalidade` (
 
 DROP TABLE IF EXISTS `modalidade`;
 CREATE TABLE IF NOT EXISTS `modalidade` (
-  `idmodalidade` int NOT NULL,
+  `idmodalidade` int NOT NULL AUTO_INCREMENT,
   `nomemodalidade` varchar(255) NOT NULL,
   `utiliza_espaco_idespaco` int NOT NULL,
   PRIMARY KEY (`idmodalidade`),
-  KEY `modalidade_utiliza_fk` (`utiliza_espaco_idespaco`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_espaco_idespaco` (`utiliza_espaco_idespaco`)
+);
 
 --
 -- Extraindo dados da tabela `modalidade`
@@ -219,7 +221,8 @@ INSERT INTO `modalidade` (`idmodalidade`, `nomemodalidade`, `utiliza_espaco_ides
 (1, 'Aeróbico', 1),
 (2, 'Musculação', 2),
 (3, 'Yoga', 3),
-(4, 'Pilates', 4);
+(4, 'Pilates', 4),
+(16, 'teste', 2);
 
 -- --------------------------------------------------------
 
@@ -234,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `plano` (
   `duracao` varchar(255) NOT NULL,
   `valorplano` decimal(10,2) NOT NULL,
   PRIMARY KEY (`idplano`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `plano`
@@ -243,20 +246,8 @@ CREATE TABLE IF NOT EXISTS `plano` (
 INSERT INTO `plano` (`idplano`, `nomeplano`, `duracao`, `valorplano`) VALUES
 (1, 'Plano Básico', '1 mês', '150.00'),
 (2, 'Plano Intermediário', '1 mês', '250.00'),
-(3, 'Plano Premium', '1 mês', '400.00');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `utiliza`
---
-
-DROP TABLE IF EXISTS `utiliza`;
-CREATE TABLE IF NOT EXISTS `utiliza` (
-  `nomeespaco` varchar(255) DEFAULT NULL,
-  `espaco_idespaco` int NOT NULL,
-  PRIMARY KEY (`espaco_idespaco`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+(3, 'Plano Premium', '1 mês', '400.00'),
+(51, 'teste', 'teste', '5.00');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
