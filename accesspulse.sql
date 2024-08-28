@@ -132,7 +132,9 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `dataadmissao` date NOT NULL,
   `datademissao` date DEFAULT NULL,
   `senha` varchar(255) NOT NULL,
-  PRIMARY KEY (`cpf`)
+  `cpfgerente` varchar(11),
+  PRIMARY KEY (`cpf`),
+  KEY `acesso_funcionario_func_fk` (`cpfgerente`)
 );
 
 --
