@@ -38,10 +38,10 @@ include('exibirEspacos.php');
     <?php mostrarEspaco();?>
   </div>
   <div class="item5">
-    <span>Caio Casadei</span>
     <span>Fernando Lorenzeto</span>
-    <span>Luiz Gustavo</span>
+    <span>Gustavo Balmant</span>
     <span>Matheus Mendes</span>
+    <span>Matheus Thiago</span>
   </div>
 </div>
 
